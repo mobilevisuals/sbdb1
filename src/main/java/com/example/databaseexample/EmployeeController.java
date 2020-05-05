@@ -15,9 +15,14 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class EmployeeController {
 
-    @Autowired
     private EmployeeServiceImpl employeeService;
-//vi kan lägga till method = RequestMethod.GET för att markera tydligt att det är GET,
+
+    @Autowired
+    public EmployeeController(EmployeeServiceImpl employeeService) {
+        this.employeeService = employeeService;
+    }
+
+    //vi kan lägga till method = RequestMethod.GET för att markera tydligt att det är GET,
     //men det behövs egentligen inte, eftersom GET är standard.
     @RequestMapping(value = "/employee", method = RequestMethod.GET)
     public List<Employee> getEmployees() {

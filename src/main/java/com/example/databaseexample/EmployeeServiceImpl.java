@@ -9,8 +9,12 @@ import org.springframework.stereotype.Service;
 @Service
 public class EmployeeServiceImpl {
 
-    @Autowired
     EmployeeRepository employeeRepository;
+
+    @Autowired
+    public EmployeeServiceImpl(EmployeeRepository employeeRepository) {
+        this.employeeRepository = employeeRepository;
+    }
 
     public Optional<Employee> getEmployee(long id) {
         return employeeRepository.findById(id);
